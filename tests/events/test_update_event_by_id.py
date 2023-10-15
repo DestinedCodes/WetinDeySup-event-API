@@ -179,16 +179,6 @@ class TestUpdateEventById(unittest.TestCase):
         # skip this test for now
         return
 
-        # Simulate a database error
-
-        # Check if the response status code is 500 (Internal Server Error)
-        self.assertEqual(response.status_code, 500)
-
-        # Check if the response data contains the expected fields
-        response_data = response.json()
-        self.assertEqual(response_data["error"], "Internal Server Error")
-        self.assertEqual(response_data["message"], "Something went wrong")
-
 
 if __name__ == '__main__':
     unittest.main()

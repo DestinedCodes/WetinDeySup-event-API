@@ -44,7 +44,10 @@ def get_user_info():
         user_details = user.format()
         return (
             jsonify(
-                {"message": f"user  details fetched successfully", "data": user_details}
+                {
+                    "message": "user  details fetched successfully",
+                    "data": user_details,
+                }
             ),
             200,
         )
@@ -80,7 +83,7 @@ def update_user():
         if user is None:
             return jsonify({"error": "Not Found", "message": "User not found"}), 404
         for key, value in data.items():
-            if key == "id" or key == "created_at":
+            if key in ["id", "created_at"]:
                 continue
             setattr(user, key, value)
         user.update()

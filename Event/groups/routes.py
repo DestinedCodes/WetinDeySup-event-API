@@ -21,12 +21,15 @@ def add_user_to_group(group_id, new_member_id):
 
         # Check if the group and user exist
         if group is None or new_member is None:
-            return jsonify(
-                {
-                    "message": f"Group or user not found",
-                    "error": "Not Found"
-                }
-            ), 404
+            return (
+                jsonify(
+                    {
+                        "message": "Group or user not found",
+                        "error": "Not Found",
+                    }
+                ),
+                404,
+            )
 
         newgroup=new_member.user_groups
         if group.id in [group.id for group in newgroup]:
@@ -40,7 +43,7 @@ def add_user_to_group(group_id, new_member_id):
 
         new_member.user_groups=newgroup
         new_member.update()
-        
+
         return jsonify(
             {
                  "data": group.id,
@@ -68,9 +71,7 @@ def get_group_by_id(group_id):
     """
     is_logged_in(session)
     try:
-        group = query_one_filtered(Groups,id=group_id)
-
-        if group:
+        if group := query_one_filtered(Groups, id=group_id):
             # Create a dictionary with group details
             group_details = {"id": group.id, "title": group.title}
             return jsonify(
@@ -80,15 +81,7 @@ def get_group_by_id(group_id):
                 }
             ), 200
         else:
-            return (
-                jsonify(
-                    {
-                        "error": "Not Found",
-                        "message": f"Group not found",
-                    }
-                ),
-                404,
-            )
+            return jsonify({"error": "Not Found", "message": "Group not found"}), 404
     except Exception as e:
         return jsonify(
             {

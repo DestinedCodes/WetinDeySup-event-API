@@ -45,9 +45,7 @@ class Images(BaseModel):
         Returns:
             _type_: _description_
         """
-        return "url: {}, created_at: {}, updated_at: {}".format(
-            self.url, self.created_at, self.updated_at
-        )
+        return f"url: {self.url}, created_at: {self.created_at}, updated_at: {self.updated_at}"
 
     def format(self):
         """_summary_

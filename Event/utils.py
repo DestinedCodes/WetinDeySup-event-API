@@ -126,13 +126,10 @@ def is_logged_in(session):
         id(str):
             - logged in users id
     """
-    # user = session.get("user")
-    user = session.get("user")  or { "id": "user11_id"}
-
-    if not user:
+    if user := session.get("user") or {"id": "user11_id"}:
+        return user.get("id")
+    else:
         raise CustomError("Unauthorized", 401, "You are not logged in")
-
-    return user.get("id")
 
 
 def format_date(date):

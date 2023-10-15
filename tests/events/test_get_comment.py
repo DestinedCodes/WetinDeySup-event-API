@@ -77,7 +77,7 @@ class TestGetComments(unittest.TestCase):
 
     def test_get_comments_not_found(self):
         # Make a GET request to get comments for a non-existent event
-        response = requests.get(BASE_URI + "non-existent-event-id/comments")
+        response = requests.get(f"{BASE_URI}non-existent-event-id/comments")
 
         # Check if the response status code is 404 (Not Found)
         self.assertEqual(response.status_code, 404)

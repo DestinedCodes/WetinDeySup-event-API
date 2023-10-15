@@ -74,20 +74,7 @@ class Events(BaseModel):
 
     def __repr__(self):
         """Return a string representation of the Event object"""
-        return (
-            "Title: {}, Description: {}, Creator Id: {}, Location: {}, "
-            "Start Date: {}, Start Time: {}, "
-            "End Date: {}, End Time: {}"
-        ).format(
-            self.title,
-            self.description,
-            self.creator_id,
-            self.location,
-            self.start_date,
-            self.start_time,
-            self.end_date,
-            self.end_time,
-        )
+        return f"Title: {self.title}, Description: {self.description}, Creator Id: {self.creator_id}, Location: {self.location}, Start Date: {self.start_date}, Start Time: {self.start_time}, End Date: {self.end_date}, End Time: {self.end_time}"
 
     # Override the format method to return event attributes as a dictionary
     def format(self):

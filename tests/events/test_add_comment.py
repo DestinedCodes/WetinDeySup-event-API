@@ -60,7 +60,9 @@ class TestAddComments(unittest.TestCase):
             "user_id": "user-1",
             "body": "This is a comment"
         }
-        response = requests.post(BASE_URI + "invalid-event-id/comments", json=comment_data)
+        response = requests.post(
+            f"{BASE_URI}invalid-event-id/comments", json=comment_data
+        )
 
         # Check if the response status code is 404 (Not Found)
         self.assertEqual(response.status_code, 404)
@@ -110,7 +112,7 @@ class TestAddComments(unittest.TestCase):
 
     def test_get_comments_invalid_event_id(self):
         # Make a GET request to get comments for an invalid event ID
-        response = requests.get(BASE_URI + "invalid-event-id/comments")
+        response = requests.get(f"{BASE_URI}invalid-event-id/comments")
 
         # Check if the response status code is 404 (Not Found)
         self.assertEqual(response.status_code, 404)

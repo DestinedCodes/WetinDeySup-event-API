@@ -69,9 +69,7 @@ class Users(BaseModel):
 
     def __repr__(self):
         """Return a string representation of the User object"""
-        return "Id: {}, Name: {}, Email: {}".format(
-            self.id, self.name, self.email
-        )
+        return f"Id: {self.id}, Name: {self.name}, Email: {self.email}"
 
     # Override the format method to return event attributes as a dictionary
     def format(self):

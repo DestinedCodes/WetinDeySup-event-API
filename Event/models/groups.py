@@ -49,7 +49,7 @@ class Groups(BaseModel):
 
     def __repr__(self):
         """Representation of the Groups class."""
-        return "title: {}".format(self.title)
+        return f"title: {self.title}"
 
     def format(self):
         """Returns a dictionary representation of the Groups object."""

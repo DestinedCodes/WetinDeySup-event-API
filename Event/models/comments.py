@@ -69,9 +69,7 @@ class Comments(BaseModel):
 
     def __repr__(self):
         """Return a string representation of the Comment object"""
-        return "event_id: {}, user_id: {}, body: {}, created_at: {}, updated_at: {}".format(
-            self.event_id, self.user_id, self.body, self.created_at, self.updated_at
-        )
+        return f"event_id: {self.event_id}, user_id: {self.user_id}, body: {self.body}, created_at: {self.created_at}, updated_at: {self.updated_at}"
 
     def format(self):
         """Return a dictionary representation of the Comment object"""

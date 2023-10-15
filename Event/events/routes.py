@@ -155,8 +155,7 @@ def get_event(event_id):
     """
     is_logged_in(session)
     try:
-        event = query_one_filtered(table=Events, id=event_id)
-        if event:
+        if event := query_one_filtered(table=Events, id=event_id):
             return jsonify(
                 {
                     "message": "Event successfully Found", 
@@ -206,10 +205,10 @@ def update_event(event_id: str) -> tuple:
                     "message": "Event not Found",
                     }
                     ), 404
-        
-            
+
+
         for k, v in req.items():
-            if k == 'creator_id' or k == 'created_at':
+            if k in ['creator_id', 'created_at']:
                 continue
             setattr(db_data, k, v)
         db_data.update()
